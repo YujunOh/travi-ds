@@ -1,0 +1,36 @@
+/* 카탈로그 한 장의 배치. 좁은 화면은 한 줄, 넓은 화면은 왼쪽에 고르는 판을 붙여 둔다 */
+.layout {
+  display: grid;
+  gap: 24px;
+}
+
+.main {
+  min-width: 0;
+}
+
+.section {
+  scroll-margin-top: 16px;
+}
+
+@media (min-width: 62em) {
+  .layout {
+    grid-template-columns: 360px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .aside {
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    /* 짚은 곳의 테가 잘리지 않게 안쪽으로 조금 띄운다 */
+    padding: 4px;
+    margin: -4px;
+  }
+}
+
+/* 숫자와 작은 라벨. 글꼴 후보 C 에서 고정폭이 된다 */
+.data {
+  font-family: var(--tv-font-data);
+  font-variant-numeric: tabular-nums;
+}

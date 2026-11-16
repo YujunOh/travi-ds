@@ -1,0 +1,20 @@
+/* 카드 후보가 '올리면 그림자'일 때만 값이 들어온다. 다른 후보에서는 마우스를 올려도 그대로다 */
+.lift {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.lift.lift:hover {
+  box-shadow: var(--tv-card-hover-shadow);
+  transform: translateY(var(--tv-card-hover-shift));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift { transition: none; }
+  .lift.lift:hover { transform: none; }
+}
+
+/* 숫자가 들어가는 줄. 글꼴 후보 C 에서 고정폭이 된다 */
+.data {
+  font-family: var(--tv-font-data);
+  font-variant-numeric: tabular-nums;
+}

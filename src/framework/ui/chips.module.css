@@ -1,0 +1,42 @@
+/* 상태 칩과 분야 칩의 모양. 색은 theme.ts 가 내보내는 역할 변수(--tv-*)만 쓴다.
+   모양(알약, 점)은 지금 사이트의 칩(style.css 의 .tv-chip)과 같다.
+   어느 상태에 어느 색을 붙일지는 후보다. theme.ts 가 고른 후보에 맞춰 --tv-chip-* 값을 바꾼다 */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--tv-line-strong);
+  border-radius: 999px;
+  background: var(--tv-surface);
+  color: var(--tv-text-muted);
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* 상태 5개. Coming soon 과 Ended 는 사이트와 같이 가라앉은 바탕에 진한 선이다.
+   사이트의 Coming soon 은 가장 흐린 글자색인데, 가라앉은 바탕 위에서는 대비가 4.5 에 못 미쳐 보조 글자색을 쓴다 */
+.coming { border-style: dashed; background: var(--tv-bg-subtle); }
+.open { color: var(--tv-chip-open); background: var(--tv-chip-open-bg); border-color: var(--tv-chip-open-line); }
+.full { color: var(--tv-chip-full); background: var(--tv-chip-full-bg); border-color: var(--tv-chip-full-line); }
+.training { color: var(--tv-chip-training); background: var(--tv-chip-training-bg); border-color: var(--tv-chip-training-line); }
+.ended { background: var(--tv-bg-subtle); }
+
+/* 분야 5개. 글자와 점이 분야 색이고 바탕은 카드 색 그대로다 */
+.domain { border-color: var(--tv-line); color: var(--chip-domain); font-family: var(--tv-font-data); }
+.security { --chip-domain: var(--tv-domain-security); }
+.finance { --chip-domain: var(--tv-domain-finance); }
+.agriculture { --chip-domain: var(--tv-domain-agriculture); }
+.healthcare { --chip-domain: var(--tv-domain-healthcare); }
+.other { --chip-domain: var(--tv-domain-other); }
